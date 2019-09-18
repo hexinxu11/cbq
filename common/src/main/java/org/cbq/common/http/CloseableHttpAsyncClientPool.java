@@ -75,7 +75,7 @@ public class CloseableHttpAsyncClientPool {
             HttpGet httpGet = new HttpGet("https://www.mzitu.com/tag/youhuo/");
             CloseableHttpAsyncClientPool clientPool =  AsyncClientPoolFactory.custom()
                     .setConnectTimeout(5000)
-                    .setProxy(new HttpHost("121.10.141.149",8080))
+//                    .setProxy(new HttpHost("121.10.141.149",8080))
                     .build();
             CloseableHttpAsyncClient client  = clientPool.build();
             client.start();
@@ -83,7 +83,7 @@ public class CloseableHttpAsyncClientPool {
                 @Override
                 public void completed(HttpResponse httpResponse) {
                     String body="";
-                    //这里使用EntityUtils.toString()方式时会大概率报错，原因：未接受完毕，链接已关
+                    /** 这里使用EntityUtils.toString()方式时会大概率报错，原因：未接受完毕，链接已关 **/
                     try {
                         HttpEntity entity = httpResponse.getEntity();
                         if (entity != null) {
