@@ -13,7 +13,7 @@ public interface BasicQueue {
 
     public boolean offerDownloadTaskPacket(DownloadTaskPacket downloadTaskPacket);
 
-    public boolean offerHtmlParseTaskPacket(HtmlParseTaskPacket htmlParseTaskPacket);
+    public boolean offerHtmlParseTaskPacket(ParseTaskPacket htmlParseTaskPacket);
 
     public boolean offerUrlCleanTaskPacket(UrlCleanTaskPacket urlCleanTaskPacket);
 
@@ -21,7 +21,7 @@ public interface BasicQueue {
 
     public boolean offerDownloadTaskPacket(DownloadTaskPacket downloadTaskPacket, long timeout, TimeUnit unit);
 
-    public boolean offerHtmlParseTaskPacket(HtmlParseTaskPacket htmlParseTaskPacket, long timeout, TimeUnit unit);
+    public boolean offerHtmlParseTaskPacket(ParseTaskPacket htmlParseTaskPacket, long timeout, TimeUnit unit);
 
     public boolean offerUrlCleanTaskPacket(UrlCleanTaskPacket urlCleanTaskPacket, long timeout, TimeUnit unit);
 

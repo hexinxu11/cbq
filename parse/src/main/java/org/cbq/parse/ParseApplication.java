@@ -1,4 +1,4 @@
-package com.cbq.parse;
+package org.cbq.parse;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

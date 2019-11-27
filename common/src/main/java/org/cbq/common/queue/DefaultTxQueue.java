@@ -81,8 +81,8 @@ public class DefaultTxQueue extends AbstractBasicQueue{
     }
 
     @Override
-    public boolean offerHtmlParseTaskPacket(HtmlParseTaskPacket htmlParseTaskPacket) {
-        return sendMsg(htmlParseTaskPacket);
+    public boolean offerHtmlParseTaskPacket(ParseTaskPacket parseTaskPacket) {
+        return sendMsg(parseTaskPacket);
     }
 
     @Override
@@ -101,7 +101,7 @@ public class DefaultTxQueue extends AbstractBasicQueue{
     }
 
     @Override
-    public boolean offerHtmlParseTaskPacket(HtmlParseTaskPacket htmlParseTaskPacket, long timeout, TimeUnit unit) {
+    public boolean offerHtmlParseTaskPacket(ParseTaskPacket htmlParseTaskPacket, long timeout, TimeUnit unit) {
         return sendMsg(htmlParseTaskPacket);
     }
 

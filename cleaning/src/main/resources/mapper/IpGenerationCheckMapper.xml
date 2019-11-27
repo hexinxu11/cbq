@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cbq.cleaning.mapper.IpGenerationCheckMapper">
+  <resultMap id="BaseResultMap" type="org.cbq.cleaning.entity.IpGenerationCheck">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ip_id" jdbcType="INTEGER" property="ipId" />
+    <result column="generation" jdbcType="INTEGER" property="generation" />
+    <result column="target_address" jdbcType="VARCHAR" property="targetAddress" />
+    <result column="last_check_time" jdbcType="TIMESTAMP" property="lastCheckTime" />
+    <result column="next_check_time" jdbcType="TIMESTAMP" property="nextCheckTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, ip_id, generation, target_address, last_check_time, next_check_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ip_generation_check
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByGenerationList" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ip_generation_check
+    where generation = #{generation,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ip_generation_check
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.cbq.cleaning.entity.IpGenerationCheck">
+    insert into ip_generation_check (id, ip_id, generation, 
+      target_address, last_check_time, next_check_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{ipId,jdbcType=INTEGER}, #{generation,jdbcType=INTEGER}, 
+      #{targetAddress,jdbcType=VARCHAR}, #{lastCheckTime,jdbcType=TIMESTAMP}, #{nextCheckTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.cbq.cleaning.entity.IpGenerationCheck">
+    insert into ip_generation_check
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="ipId != null">
+        ip_id,
+      </if>
+      <if test="generation != null">
+        generation,
+      </if>
+      <if test="targetAddress != null">
+        target_address,
+      </if>
+      <if test="lastCheckTime != null">
+        last_check_time,
+      </if>
+      <if test="nextCheckTime != null">
+        next_check_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ipId != null">
+        #{ipId,jdbcType=INTEGER},
+      </if>
+      <if test="generation != null">
+        #{generation,jdbcType=INTEGER},
+      </if>
+      <if test="targetAddress != null">
+        #{targetAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextCheckTime != null">
+        #{nextCheckTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.cbq.cleaning.entity.IpGenerationCheck">
+    update ip_generation_check
+    <set>
+      <if test="ipId != null">
+        ip_id = #{ipId,jdbcType=INTEGER},
+      </if>
+      <if test="generation != null">
+        generation = #{generation,jdbcType=INTEGER},
+      </if>
+      <if test="targetAddress != null">
+        target_address = #{targetAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckTime != null">
+        last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="nextCheckTime != null">
+        next_check_time = #{nextCheckTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.cbq.cleaning.entity.IpGenerationCheck">
+    update ip_generation_check
+    set ip_id = #{ipId,jdbcType=INTEGER},
+      generation = #{generation,jdbcType=INTEGER},
+      target_address = #{targetAddress,jdbcType=VARCHAR},
+      last_check_time = #{lastCheckTime,jdbcType=TIMESTAMP},
+      next_check_time = #{nextCheckTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

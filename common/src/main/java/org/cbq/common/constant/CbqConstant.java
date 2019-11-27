@@ -9,4 +9,6 @@ package org.cbq.common.constant;
 public class CbqConstant {
 
     public final static String CHARSET_UTF8 = "utf-8";
+
+    public final static int ZERO = 0;
 }
